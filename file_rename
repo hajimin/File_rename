@@ -1,0 +1,24 @@
+import os
+from openpyxl import load_workbook
+
+folder_path = "폴더 경로" 
+folder_list = os.listdir(folder_path)
+
+data = load_workbook("파일 경로/파일 이름.xlsx")
+ws=data.active
+column = 1
+
+after_order_list = natsort.natsorted(folder_list) 
+
+#print(ws.max_row)
+    
+for i in range(0,ws.max_row + 1):
+    
+    oldfilename = os.path.join(folder_path, after_order_list[i]) 
+    
+    new_name = str(ws.cell(i+1, column).value) + ".xls"
+    newfilename = os.path.join(folder_path, new_name)         
+    
+    print(i, oldfilename, newfilename)
+
+    
